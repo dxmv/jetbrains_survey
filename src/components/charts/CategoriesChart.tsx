@@ -1,27 +1,34 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LabelList, Cell } from 'recharts';
 import type { PropertyCount } from '../../types';
 
 interface CategoriesChartProps {
   data: PropertyCount[];
 }
 
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff6384', '#36a2eb'];
+const ROW_HEIGHT = 50;
+
 const CategoriesChart = ({ data }: CategoriesChartProps) => {
+
+  const dynamicHeight = Math.max(300, data.length * ROW_HEIGHT);
   return (
-    <div>
-      <h3>Distribution by Categories</h3>
-      <ResponsiveContainer width="100%" height={500}>
+    <div className="categories-chart">
+      <h3>Distribution by Categories ({data.length} {data.length === 1 ? 'category' : 'categories'})</h3>
+      <ResponsiveContainer width="100%" height={dynamicHeight}>
         <BarChart 
           data={data}
-          layout="horizontal"
-          width={"100vw"}
+          layout="vertical"
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="category" dataKey="name" width={150} />
-          <YAxis type="number" />
-
+          <YAxis type="category" dataKey="name" width={200} interval={0} />
+          <XAxis type="number" />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="count" fill="#8884d8" />
+          <Bar dataKey="count">
+            {data.map((_, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+            <LabelList dataKey="count" position="right" />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>

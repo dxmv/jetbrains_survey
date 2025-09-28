@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, LabelList } from 'recharts';
 import type{ PropertyCount } from '../../types';
 
 interface DifficultiesChartProps {
@@ -11,19 +11,20 @@ const MEDIUM_NAME = 'medium';
 const HARD_NAME = 'hard';
 
 const DifficultiesChart = ({ data }: DifficultiesChartProps) => {
+  const pieData: Array<Record<string, string | number>> = data.map(({ name, count }) => ({ name, count }));
   return (
     <div>
       <h3>Difficulty Distribution</h3>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie
-            data={data}
+            data={pieData}
             cx="50%"
             cy="50%"
-            colors={COLORS}
             labelLine={false}
             dataKey="count"
             nameKey="name"
+            label={({ name, value }: any) => `${name}: ${value}`}
           >
             {data.map((entry, index) => (
               <Cell 
@@ -39,6 +40,9 @@ const DifficultiesChart = ({ data }: DifficultiesChartProps) => {
           </Pie>
           <Tooltip />
           <Legend />
+          <Pie dataKey="count" fill="#8884d8">
+            <LabelList dataKey="count" position="top" />
+          </Pie>
         </PieChart>
       </ResponsiveContainer>
     </div>

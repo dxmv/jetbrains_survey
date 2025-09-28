@@ -5,12 +5,14 @@
 - [x] hook for getting property count
 - [x] category chart
 - [x] difficulty chart
-- [ ] filter by category
 - [x] handle loading and error states for the request
+- [x] display counts in charts
+- [ ] filter by category
+- [ ] on filter change the table and difficulty chart
 - [ ] make it look better
 - [ ] make error look better
 - [ ] make loading look better
 - [ ] make the application responsive
-- [ ] cache data
+- [ ] optimise the app
 - [ ] favicon
 - [ ] modify the readme
