@@ -1,8 +1,7 @@
 ### Todo
-- [ ] fetch at least 50 questions from the api
+- [x] fetch at least 50 questions from the api
 - [ ] handle loading and error states for the request
-- [ ] display all data
-- [ ] display the list of question categories
+- [x] display the list of question categories
 - [ ] category chart
 - [ ] difficulty chart
 - [ ] filter by category
