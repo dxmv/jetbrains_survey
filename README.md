@@ -7,12 +7,13 @@
 - [x] difficulty chart
 - [x] handle loading and error states for the request
 - [x] display counts in charts
-- [ ] filter by category
-- [ ] on filter change the table and difficulty chart
+- [x] filter by category
+- [x] on filter change the table and difficulty chart
 - [ ] make it look better
 - [ ] make error look better
 - [ ] make loading look better
 - [ ] make the application responsive
 - [ ] optimise the app
 - [ ] favicon
+- [ ] add comments
 - [ ] modify the readme
