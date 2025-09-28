@@ -1,12 +1,12 @@
 import useQuestions from './hooks/useQuestions'
-import './App.css'
-import QuestionsTable from './components/QuestionsTable'
-import Charts from './components/Charts'
-import useQuestionPropertyCount from './hooks/useQuestionPropertyCount';
+import useQuestionPropertyCount from './hooks/useQuestionPropertyCount'
+import TableAndDifficulty from './components/TableAndDifficulty'
+import CategoriesChart from './components/charts/CategoriesChart'
 
 function App() {
   const { questions, loading, error, errorMessage } = useQuestions();
-
+  const difficulties = useQuestionPropertyCount(questions, 'difficulty');
+  const categories = useQuestionPropertyCount(questions, 'category');
 
 
   if (error) {
@@ -22,10 +22,8 @@ function App() {
       <header className="header">
         <h2>Total questions: {questions.length}</h2>
       </header>
-      <Charts questions={questions} />
-      {/* Charts here, side by side */}
-      {/* Question table here */}
-      <QuestionsTable questions={questions} />
+      <TableAndDifficulty questions={questions} difficulties={difficulties} />
+      <CategoriesChart data={categories} />
     </main>
   );
 }

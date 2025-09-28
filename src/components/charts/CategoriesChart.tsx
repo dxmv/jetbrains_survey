@@ -7,17 +7,18 @@ interface CategoriesChartProps {
 
 const CategoriesChart = ({ data }: CategoriesChartProps) => {
   return (
-    <div style={{ width: '80vw', height: '700px' }}>
-      <h3>Categories</h3>
-      <ResponsiveContainer>
+    <div>
+      <h3>Distribution by Categories</h3>
+      <ResponsiveContainer width="100%" height={500}>
         <BarChart 
           data={data}
-          layout="vertical"
-          margin={{ top: 5, right: 30, left: 100, bottom: 5 }}
+          layout="horizontal"
+          width={"100vw"}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="number" />
-          <YAxis type="category" dataKey="name" width={150} />
+          <XAxis type="category" dataKey="name" width={150} />
+          <YAxis type="number" />
+
           <Tooltip />
           <Legend />
           <Bar dataKey="count" fill="#8884d8" />

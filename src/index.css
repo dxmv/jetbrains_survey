@@ -1,6 +1,12 @@
 /* Import jetbrains mono */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
+:root {
+  --easy-color: #09ba09;
+  --medium-color: #FFA500;
+  --hard-color: #ff0000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -43,13 +49,46 @@ tr:hover {
 }
 
 .difficulty-easy {
-  color: #008000;
+  color: var(--easy-color);
 }
 
 .difficulty-medium {
-  color: #FFA500;
+  color: var(--medium-color);
 }
 
 .difficulty-hard {
-  color: #FF0000;
+  color: var(--hard-color);
+}
+
+
+/* Two-column layout for table and difficulty chart */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin: 2rem 0;
+}
+
+.table-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.table-controls > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
 }

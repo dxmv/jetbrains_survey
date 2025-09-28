@@ -5,26 +5,36 @@ interface DifficultiesChartProps {
   data: PropertyCount[];
 }
 
-const COLORS = ['#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['var(--easy-color)', 'var(--medium-color)', 'var(--hard-color)'];
+const EASY_NAME = 'easy';
+const MEDIUM_NAME = 'medium';
+const HARD_NAME = 'hard';
 
 const DifficultiesChart = ({ data }: DifficultiesChartProps) => {
   return (
     <div>
-      <h3>Difficulties</h3>
-      <ResponsiveContainer width={400} height={400}>
+      <h3>Difficulty Distribution</h3>
+      <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
+            colors={COLORS}
             labelLine={false}
-            outerRadius={80}
-            fill="#8884d8"
             dataKey="count"
             nameKey="name"
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell 
+              key={`cell-${index}`} 
+              fill={
+                entry.name === EASY_NAME ? 'var(--easy-color)'
+                 : entry.name === MEDIUM_NAME ? 'var(--medium-color)' 
+                 : entry.name === HARD_NAME ? 'var(--hard-color)'
+                 : COLORS[index % COLORS.length]
+              } 
+              />
             ))}
           </Pie>
           <Tooltip />

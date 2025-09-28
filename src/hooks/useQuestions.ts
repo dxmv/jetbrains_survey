@@ -9,7 +9,8 @@ const normalizeQuestion = (question: Question): Question => {
   return {
     ...question,
     question: decodeURIComponent(question.question),
-    category: decodeURIComponent(question.category),
+    category: decodeURIComponent(question.category),  
+    correct_answer: decodeURIComponent(question.correct_answer),
   };
 };
 
