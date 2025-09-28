@@ -1,11 +1,15 @@
 ### Todo
 - [x] fetch at least 50 questions from the api
-- [ ] handle loading and error states for the request
 - [x] display the list of question categories
+- [x] get rid of html codes
 - [ ] category chart
 - [ ] difficulty chart
 - [ ] filter by category
+- [x] handle loading and error states for the request
 - [ ] make it look better
+- [ ] make error look better
+- [ ] make loading look better
 - [ ] make the application responsive
 - [ ] cache data
+- [ ] favicon
 - [ ] modify the readme
