@@ -1,11 +1,13 @@
 import useQuestions from './hooks/useQuestions'
 import './App.css'
 import QuestionsTable from './components/QuestionsTable'
-import useCategories from './hooks/useCategories'
+import Charts from './components/Charts'
+import useQuestionPropertyCount from './hooks/useQuestionPropertyCount';
 
 function App() {
   const { questions, loading, error, errorMessage } = useQuestions();
-  const categories = useCategories(questions);
+
+
 
   if (error) {
     return <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Error: {errorMessage}</main>;
@@ -19,8 +21,8 @@ function App() {
     <main>
       <header className="header">
         <h2>Total questions: {questions.length}</h2>
-        <h2>Total categories: {categories.length}</h2>
       </header>
+      <Charts questions={questions} />
       {/* Charts here, side by side */}
       {/* Question table here */}
       <QuestionsTable questions={questions} />

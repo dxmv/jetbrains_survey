@@ -6,3 +6,8 @@ export interface Question {
         question: string;
         type: string;
 }
+
+export interface PropertyCount {
+        name: string;
+        count: number;
+}

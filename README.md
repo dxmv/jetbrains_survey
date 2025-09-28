@@ -2,8 +2,9 @@
 - [x] fetch at least 50 questions from the api
 - [x] display the list of question categories
 - [x] get rid of html codes
-- [ ] category chart
-- [ ] difficulty chart
+- [x] hook for getting property count
+- [x] category chart
+- [x] difficulty chart
 - [ ] filter by category
 - [x] handle loading and error states for the request
 - [ ] make it look better
