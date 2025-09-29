@@ -5,6 +5,11 @@
   --easy-color: #09ba09;
   --medium-color: #FFA500;
   --hard-color: #ff0000;
+  --surface-color: #ffffff;
+  --surface-muted: #f8fafc;
+  --border-color: #e2e8f0;
+  --text-color: #0f172a;
+  --muted-text-color: #475569;
 }
 
 * {
@@ -12,6 +17,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c7d2fe 0%, #eff6ff 35%, #f8fafc 100%);
+  color: var(--text-color);
 }
 
 button {
@@ -48,30 +59,40 @@ button:focus-visible {
 main {
   width: 100%;
   min-height: 100vh;
-  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+  background: var(--surface-color);
+  border-radius: 16px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
 }
 
 /* table styles */
 table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--surface-color);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 th, td,tr {
-  border: 1px solid #000;
+  border: 1px solid var(--border-color);
   padding: 0.5rem;
 }
 
 th {
-  background-color: #f0f0f0;
+  background-color: var(--surface-muted);
+  text-align: left;
+  font-weight: 700;
 }
 
 tr:nth-child(odd) {
-  background-color: #f0f0f0;
+  background-color: var(--surface-muted);
 }
 
 tr:hover {
-  background-color: #ccc;
+  background-color: #e0f2fe;
   cursor: pointer;
 }
 
@@ -101,6 +122,41 @@ tr:hover {
   margin: 2rem 0;
 }
 
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+select {
+  background: var(--surface-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.4rem 2.5rem 0.4rem 0.75rem;
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #2563eb 50%), linear-gradient(135deg, #2563eb 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 13px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
 .table-controls {
   display: flex;
   gap: 1rem;
@@ -113,6 +169,7 @@ tr:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .table-wrapper {
@@ -134,6 +191,8 @@ tr:hover {
   min-height: 60vh;
   padding: 2rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
 }
 
 .categories-chart > h3 {
@@ -145,6 +204,14 @@ tr:hover {
 @media (max-width: 900px) {
   .main-grid {
     grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .table-wrapper table {
+    min-width: 520px;
   }
 
 }
