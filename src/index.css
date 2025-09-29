@@ -34,7 +34,6 @@ button {
   color: #ffffff;
   border: none;
   padding: 0.55rem 1.15rem;
-  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 0.01em;
@@ -72,7 +71,6 @@ main {
   margin: 0 auto;
   padding: 2.5rem 2rem 3rem;
   background: var(--surface-color);
-  border-radius: 16px;
   box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
 }
 
@@ -81,7 +79,6 @@ table {
   width: 100%;
   border-collapse: collapse;
   background: var(--surface-color);
-  border-radius: 12px;
   overflow: hidden;
   color: var(--text-color);
 }
@@ -152,7 +149,6 @@ tr:hover {
 select {
   background: var(--surface-muted);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
   padding: 0.4rem 2.5rem 0.4rem 0.75rem;
   color: var(--text-color);
   font-weight: 600;
@@ -189,7 +185,6 @@ select:focus-visible {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 12px;
 }
 
 .table-wrapper table {
@@ -206,7 +201,6 @@ select:focus-visible {
   padding: 2rem;
   text-align: center;
   background: rgba(255, 255, 255, 0.85);
-  border-radius: 16px;
   box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
 }
 
@@ -229,4 +223,8 @@ select:focus-visible {
     min-width: 520px;
   }
 
+  .table-controls{
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
 }

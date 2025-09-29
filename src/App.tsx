@@ -27,7 +27,7 @@ function App() {
       <main>
         <header className="header">
           <h2>Total questions: {questions.length}</h2>
-          <select id="category-filter" onChange={handleCategoryFilterChange}>
+          <select id="category-filter" onChange={handleCategoryFilterChange} style={{ maxWidth: '100%' }}>
             <option value="">All categories</option>
             {categories.map((category) => (
               <option key={category.name} value={category.name}>{category.name}</option>
