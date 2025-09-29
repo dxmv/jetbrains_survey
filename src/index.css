@@ -2,14 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
-  --easy-color: #09ba09;
-  --medium-color: #FFA500;
-  --hard-color: #ff0000;
+  --easy-color: #0fa968;
+  --medium-color: #f59f00;
+  --hard-color: #ef4444;
   --surface-color: #ffffff;
-  --surface-muted: #f8fafc;
-  --border-color: #e2e8f0;
-  --text-color: #0f172a;
-  --muted-text-color: #475569;
+  --surface-muted: #f6f8fb;
+  --surface-hover: #eef2f7;
+  --border-color: #d8dee9;
+  --text-color: #1f2937;
+  --muted-text-color: #4b5563;
+  --primary-color: #2563eb;
+  --primary-color-dark: #1d4ed8;
+  --background-color: #f1f4f9;
 }
 
 * {
@@ -21,34 +25,39 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #c7d2fe 0%, #eff6ff 35%, #f8fafc 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, var(--background-color) 100%);
   color: var(--text-color);
 }
 
 button {
-  background-color: #2563eb;
+  background-color: var(--primary-color);
   color: #ffffff;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.55rem 1.15rem;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.18);
 }
 
 button:hover:not(:disabled) {
-  background-color: #1d4ed8;
+  background-color: var(--primary-color-dark);
   transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(29, 78, 216, 0.22);
 }
 
 button:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.18);
 }
 
 button:disabled {
-  background-color: #93c5fd;
+  background-color: rgba(37, 99, 235, 0.35);
   cursor: not-allowed;
   color: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
 }
 
 button:focus-visible {
@@ -64,7 +73,7 @@ main {
   padding: 2.5rem 2rem 3rem;
   background: var(--surface-color);
   border-radius: 16px;
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
 }
 
 /* table styles */
@@ -74,17 +83,19 @@ table {
   background: var(--surface-color);
   border-radius: 12px;
   overflow: hidden;
+  color: var(--text-color);
 }
 
 th, td,tr {
   border: 1px solid var(--border-color);
-  padding: 0.5rem;
+  padding: 0.75rem 0.85rem;
 }
 
 th {
   background-color: var(--surface-muted);
   text-align: left;
   font-weight: 700;
+  color: var(--muted-text-color);
 }
 
 tr:nth-child(odd) {
@@ -92,7 +103,7 @@ tr:nth-child(odd) {
 }
 
 tr:hover {
-  background-color: #e0f2fe;
+  background-color: var(--surface-hover);
   cursor: pointer;
 }
 
@@ -135,6 +146,7 @@ tr:hover {
 .header h2 {
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--text-color);
 }
 
 select {
@@ -146,14 +158,15 @@ select {
   font-weight: 600;
   cursor: pointer;
   appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, #2563eb 50%), linear-gradient(135deg, #2563eb 50%, transparent 50%);
+  background-image: linear-gradient(45deg, transparent 50%, var(--primary-color) 50%), linear-gradient(135deg, var(--primary-color) 50%, transparent 50%);
   background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 13px) calc(50% - 3px);
   background-size: 6px 6px, 6px 6px;
   background-repeat: no-repeat;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 
 select:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
@@ -176,6 +189,7 @@ select:focus-visible {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
 }
 
 .table-wrapper table {
@@ -188,11 +202,12 @@ select:focus-visible {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 100vh;
   padding: 2rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
 }
 
 .categories-chart > h3 {

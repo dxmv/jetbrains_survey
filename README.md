@@ -9,11 +9,6 @@ A lightweight dashboard for exploring trivia questions fetched from the Open Tri
 - Difficulty pie chart and category bar chart with labelled counts
 - Polished loading/error states with retry support
 
-## Tech Stack
-- React + TypeScript
-- Vite + SWC
-- Recharts for visualisations
-- Vanilla CSS (global stylesheet)
 
 ## Getting Started
 1. Install dependencies
@@ -28,22 +23,6 @@ A lightweight dashboard for exploring trivia questions fetched from the Open Tri
    ```bash
    npm run build
    ```
-
-## Project Structure
-```
-src/
-  components/
-    charts/        # Recharts-based visualisations
-    TableAndDifficulty.tsx
-    QuestionsTable.tsx
-    StatusMessage.tsx
-  hooks/
-    useQuestions.ts
-    useQuestionPropertyCount.ts
-  assets/
-  index.css        # Global styling
-  App.tsx
-```
 
 ## API
 Questions are retrieved from [`https://opentdb.com/api.php`](https://opentdb.com/api.php) using URL-encoded payloads so special characters display correctly. See `src/hooks/useQuestions.ts` for normalisation details.
@@ -63,7 +42,5 @@ Questions are retrieved from [`https://opentdb.com/api.php`](https://opentdb.com
 - [x] make error look better
 - [x] make loading look better
 - [x] make the application responsive
-- [ ] optimise the app
-- [ ] favicon
-- [ ] add comments
+- [x] favicon and title
 - [x] modify the readme
