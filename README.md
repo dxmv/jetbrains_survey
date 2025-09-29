@@ -9,7 +9,7 @@
 - [x] display counts in charts
 - [x] filter by category
 - [x] on filter change the table and difficulty chart
-- [ ] make it look better
+- [x] make it look better
 - [ ] make error look better
 - [ ] make loading look better
 - [ ] make the application responsive

@@ -2,6 +2,7 @@ import useQuestions from './hooks/useQuestions'
 import useQuestionPropertyCount from './hooks/useQuestionPropertyCount'
 import TableAndDifficulty from './components/TableAndDifficulty'
 import CategoriesChart from './components/charts/CategoriesChart'
+import StatusMessage from './components/StatusMessage'
 import { useMemo, useState } from 'react';
 
 function App() {
@@ -21,29 +22,22 @@ function App() {
     setCategoryFilter(category);
   };
 
-
-  if (error) {
-    return <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Error: {errorMessage}</main>;
-  }
-
-  if (loading) {
-    return <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</main>;
-  }
-
   return (
-    <main>
-      <header className="header">
-        <h2>Total questions: {questions.length}</h2>
-        <select id="category-filter" onChange={handleCategoryFilterChange}>
-          <option value="">All categories</option>
-          {categories.map((category) => (
-            <option key={category.name} value={category.name}>{category.name}</option>
-          ))}
-        </select>
-      </header>
-      <TableAndDifficulty questions={filteredQuestions} difficulties={difficulties} />
-      <CategoriesChart data={categories} />
-    </main>
+    <StatusMessage loading={loading} error={error} errorMessage={errorMessage}>
+      <main>
+        <header className="header">
+          <h2>Total questions: {questions.length}</h2>
+          <select id="category-filter" onChange={handleCategoryFilterChange}>
+            <option value="">All categories</option>
+            {categories.map((category) => (
+              <option key={category.name} value={category.name}>{category.name}</option>
+            ))}
+          </select>
+        </header>
+        <TableAndDifficulty questions={filteredQuestions} difficulties={difficulties} />
+        <CategoriesChart data={categories} />
+      </main>
+    </StatusMessage>
   );
 }
 
