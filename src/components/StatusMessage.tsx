@@ -6,6 +6,7 @@ type StatusMessageProps = {
   errorMessage?: string;
   loadingMessage?: string;
   children?: ReactNode;
+  onRetry?: () => void;
 };
 
 const StatusMessage = ({
@@ -14,25 +15,28 @@ const StatusMessage = ({
   errorMessage,
   loadingMessage = 'Loading...',
   children,
+  onRetry,
 }: StatusMessageProps) => {
   if (!loading && !error) {
     return <>{children}</>;
   }
 
-  const message = error
-    ? `Error: ${errorMessage || 'An unknown error occurred'}`
-    : loadingMessage;
+  if (loading) {
+    return (
+      <main className="status-screen" aria-busy="true" aria-live="polite">
+        <p>{loadingMessage}</p>
+      </main>
+    );
+  }
 
   return (
-    <main
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      {message}
+    <main className="status-screen" role="alert" aria-live="assertive">
+      <p>{`Error: ${errorMessage || 'An unknown error occurred'}`}</p>
+      {onRetry && (
+        <button type="button" onClick={onRetry}>
+          Retry
+        </button>
+      )}
     </main>
   );
 };

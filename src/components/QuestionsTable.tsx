@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Question } from "../types";
 
 const QuestionsTable = ({ questions }: { questions: Question[] }) => {
@@ -6,6 +6,14 @@ const QuestionsTable = ({ questions }: { questions: Question[] }) => {
   const [pageSize, setPageSize] = useState(5);
 
   const totalPages = useMemo(() => Math.max(1, Math.ceil(questions.length / pageSize)), [questions, pageSize]);
+
+  useEffect(() => {
+    setPage(prev => (prev === 1 ? prev : 1));
+  }, [questions]);
+
+  useEffect(() => {
+    setPage(prev => Math.min(prev, totalPages));
+  }, [totalPages]);
 
   const pagedQuestions = useMemo(() => {
     const start = (page - 1) * pageSize;

@@ -6,7 +6,7 @@ import StatusMessage from './components/StatusMessage'
 import { useMemo, useState } from 'react';
 
 function App() {
-  const { questions, loading, error, errorMessage } = useQuestions();
+  const { questions, loading, error, errorMessage, refetch } = useQuestions();
   const [categoryFilter, setCategoryFilter] = useState('');
 
   const filteredQuestions = useMemo(() => {
@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <StatusMessage loading={loading} error={error} errorMessage={errorMessage}>
+    <StatusMessage loading={loading} error={error} errorMessage={errorMessage} onRetry={refetch}>
       <main>
         <header className="header">
           <h2>Total questions: {questions.length}</h2>
